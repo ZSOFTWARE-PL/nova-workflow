@@ -9,7 +9,7 @@
         >
           <slot>
             <div class="p-8">
-              <heading :level="2" class="mb-6">{{ __('Choose one of the reasons') }}</heading>
+              <heading :level="2" class="mb-6">Podaj powód</heading>
               <p class="text-80 leading-normal">
                 <select v-if="reasons(transaction) != 'textarea'" v-model="reason" class="form-control form-select w-full">
                   <option v-for="(item, index) in reasons(transaction)" :value="index">{{ item}}</option>
@@ -28,7 +28,7 @@
                   @click.prevent="close(transaction)"
                   class="btn text-80 font-normal h-9 px-3 mr-3 btn-link"
               >
-                {{ __('Cancel') }}
+                {{ __('Anuluj') }}
               </button>
               <button
                   id="confirm-delete-button"
@@ -38,7 +38,7 @@
                   @click="action(transaction)"
                   class="btn btn-default btn-primary"
               >
-                OK
+                {{ __('Potwierdź') }}
               </button>
             </div>
           </div>
@@ -47,7 +47,7 @@
     </div>
   </div>
   <div v-else>
-    No action required
+    Brak dostępnych akcji
   </div>
 </template>
 
@@ -89,7 +89,7 @@
 
         self.close(transaction);
 
-        self.$toasted.show('Resource successfully changed to ' + transaction, {type: 'success'});
+        self.$toasted.show('Dane zostały zapisane!', {type: 'success'});
 
         self.$router.push({
           name: 'index',
